@@ -26,6 +26,10 @@ export class App extends Component {
     this.setState(({ contacts }) => ({
       contacts: [newContact, ...contacts],
     }));
+
+    if (this.state.contacts.some((contact) => contact.name === name)) {
+      return alert(`${name} is already in contacts`);
+    }
   };
 
   deleteContact = (contactId) => {
@@ -40,7 +44,7 @@ export class App extends Component {
 
   getVisibleName = () => {
     const { filter, contacts } = this.state;
-    const normilizedFilter = filter.toLowerCase();
+    const normilizedFilter = filter.toLowerCase().trim();
 
     return contacts.filter((contact) => contact.name.toLowerCase().includes(normilizedFilter));
   };
