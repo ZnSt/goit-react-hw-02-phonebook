@@ -11,8 +11,7 @@ export class Form extends Component {
     event.preventDefault();
     console.log(this.state);
     this.reset();
-    this.props.onSubmit(this.state.name);
-    this.props.onSubmit(this.state.number);
+    this.props.onSubmit(this.state.name, this.state.number);
   };
 
   handleChange = (event) => {
